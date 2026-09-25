@@ -2,6 +2,11 @@ from fastapi import FastAPI
 
 app =  FastAPI()
 
-"""
-fastapi dev main.py
-"""
+
+@app.get("/")
+def home():
+    return "Welcome to fastapi."
+
+@app.get("/contact-us")
+def contact():
+    return  "You can connect us any time."
