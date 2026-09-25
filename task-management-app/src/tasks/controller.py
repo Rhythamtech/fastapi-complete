@@ -32,6 +32,6 @@ def get_one_task(db:Session , task_id: int):
     one_task = db.query(TaskModel).get(task_id)
     
     if not one_task:
-        return HTTPException(404, "Task ID is incorrect.")
+        raise HTTPException(404, "Task ID is incorrect.")
     
     return {"status": "Task fetched successfully.", "data":one_task}
