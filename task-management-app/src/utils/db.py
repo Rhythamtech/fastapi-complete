@@ -7,8 +7,6 @@ engine = create_engine(url=settings.DB_CONNECTION)
 
 LocalSession = sessionmaker(bind=engine)
 
-
-
 def get_db():
     session = LocalSession()
     try:
