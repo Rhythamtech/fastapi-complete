@@ -24,12 +24,15 @@ def get_task(db:Session, user : UserModel):
     return tasks
     
     
-def get_one_task(db:Session , task_id: int):
+def get_one_task(db:Session, task_id: int, user: UserModel):
     one_task = db.query(TaskModel).get(task_id)
-    
+
     if not one_task:
         raise HTTPException(404, "Task ID is incorrect.")
-    
+
+    if one_task.user_id != user.id:
+        raise HTTPException(401, "You are not authorized to view this task.")
+
     return one_task
 
 
