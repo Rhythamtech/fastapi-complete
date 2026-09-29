@@ -27,5 +27,5 @@ def update_task(body : TaskSchema, task_id:int,db : Session = Depends(get_db), u
     return controller.update_task(body,task_id,db)
 
 @task_routes.delete("/delete_task/{task_id}",response_model=None, status_code=status.HTTP_204_NO_CONTENT)
-def delete_task(task_id:int,db : Session = Depends(get_db), user: UserModel = Depends(is_authenticated)):
+def delete_task(task_id:int,db : Session = Depends(get_db) , user: UserModel = Depends(is_authenticated)):
     return controller.update_task(task_id,db)
